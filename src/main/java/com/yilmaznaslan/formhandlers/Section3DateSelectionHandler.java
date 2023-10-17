@@ -15,6 +15,7 @@ import java.time.Duration;
 import java.util.List;
 
 import static com.yilmaznaslan.AppointmentFinder.TIMEOUT_FOR_INTERACTING_WITH_ELEMENT_IN_SECONDS;
+import java.util.stream.Collectors;
 
 /**
  * DO NOT CLICK TO DATE OR TIMESLOT OTHERWISE DRIVER WON'T REFRESH
@@ -106,7 +107,7 @@ public class Section3DateSelectionHandler {
                 .until(currentDriver -> {
                     WebElement selectElement = currentDriver.findElements(By.tagName("select")).stream()
                             .filter(element1 -> element1.getAttribute("name").equals(elementName))
-                            .toList().get(0);
+                            .collect(Collectors.toList()).get(0);
                     return selectElement;
                 });
         return new Select(element);
